@@ -18,7 +18,7 @@ consoleRec(['я', 'умею', 'писать', 'рекурсивные', 'фун�
 
 #Install
 
-    git clone https://github.com/mitrofun/javascript.git
-    cd recurtion-js/h
+    git clone https://github.com/mitrofun/loftschool-javascript.git
+    cd loftschool-javascript/homework-1
     npm i
     npm run build
