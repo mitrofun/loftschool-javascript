@@ -1,0 +1,26 @@
+{
+  "name": "recursion",
+  "version": "1.0.0",
+  "description": "recurtion",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist --presets es2015",
+    "watch": "babel src -d dist --presets es2015 -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitrofun/recurtion-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mitrofun/recurtion-js/issues"
+  },
+  "homepage": "https://github.com/mitrofun/recurtion-js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0"
+  }
+}
