@@ -60,8 +60,6 @@ source - массив
     console.log(myCalculator.mul(2, 2)); //вернет 400
 
 
-
-
 #Install
 
     git clone https://github.com/mitrofun/loftschool-javascript.git
