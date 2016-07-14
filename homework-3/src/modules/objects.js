@@ -1,5 +1,5 @@
 function isSimple(a, b) {
-    return a.valueOf() == b.valueOf() && typeof a != "object";
+    return a.valueOf() === b.valueOf() && typeof a != "object";
 }
 
 function isIterable(a, b) {
