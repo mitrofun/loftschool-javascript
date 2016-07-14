@@ -102,28 +102,3 @@ module.exports = {
     reduce    : myReduce,
     splice    : mySplice
 };
-
-// myForEach(array, item => console.log(item));
-// let greaterThan4 = myFilter(array, item => item > 4);
-// let sqare = myMap(array, item => item*item);
-//
-// console.log(sqare);
-//
-// console.log(mySlice(array, 0));
-
-// console.log(array.reduce(function(a) {
-//   return a + a;
-// }));
-//
-// console.log(myReduce(array, function(a) {
-//   return a + a;
-// }));
-
-// let del = array.splice(0, 3, 100, 200, 300);
-// console.log(del);
-// console.log(array);
-
-// let a = mySplice(array, 0, 3);
-//
-// console.log(a);
-// console.log(array);
