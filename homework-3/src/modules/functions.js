@@ -1,29 +1,45 @@
-function myForEach(array, handler) {
+function myForEach(array, handler, thisArg) {
+
+    let fn = handler;
+
+    if (thisArg) {
+           fn = handler.bind(thisArg)
+    }
 
     for (let i = 0; i < array.length; i++) {
-        handler(array[i]);
+        fn(array[i]);
     }
 }
 
-function myFilter(array, handler) {
+function myFilter(array, handler, thisArg) {
 
+    let fn = handler;
     let result = [];
+
+    if (thisArg) {
+           fn = handler.bind(thisArg)
+    }
 
     for (let i = 0; i < array.length; i++) {
 
-        if (handler(array[i])) {
+        if (fn(array[i])) {
             result[result.length] = array[i]
         }
     }
     return result;
 }
 
-function myMap(array, handler) {
+function myMap(array, handler, thisArg) {
 
+    let fn = handler;
     let result = [];
 
+    if (thisArg) {
+           fn = handler.bind(thisArg)
+    }
+
     for (let i=0; i < array.length; i++){
-        result[i] = handler(array[i])
+        result[i] = fn(array[i])
     }
     return result;
 }
@@ -64,17 +80,17 @@ function myReduce(array, handler, initialValue) {
     return result;
 }
 
-function  mySplice(arrey, start, deleteCount) {
+function  mySplice(array, start, deleteCount) {
     let result = [],
         del = [];
 
     if (deleteCount) {
     } else {
-        deleteCount = arrey.length;
+        deleteCount = array.length;
     }
 
     for (let i=start; i < deleteCount; i++) {
-         del[del.length] = arrey[i];
+         del[del.length] = array[i];
     }
 
     if (arguments[3]) {
@@ -83,13 +99,13 @@ function  mySplice(arrey, start, deleteCount) {
             }
         }
 
-    for (let i = start+deleteCount; i < arrey.length; i++) {
-        result[result.length] = arrey[i];
+    for (let i = start+deleteCount; i < array.length; i++) {
+        result[result.length] = array[i];
     }
 
-    arrey.length = 0;
+    array.length = 0;
     for (let i = 0; i < result.length; i++) {
-        arrey[arrey.length] = result[i];
+        array[array.length] = result[i];
     }
     return del;
 }

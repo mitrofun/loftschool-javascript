@@ -10,6 +10,15 @@ arrFunc.forEach(array, item => console.log(item));
 //4
 //5
 //6
+arrFunc.forEach(array, function (item) {console.log(this)}, array);
+//[ 1, 2, 3, 4, 5, 6 ]
+//[ 1, 2, 3, 4, 5, 6 ]
+//[ 1, 2, 3, 4, 5, 6 ]
+//[ 1, 2, 3, 4, 5, 6 ]
+//[ 1, 2, 3, 4, 5, 6 ]
+//[ 1, 2, 3, 4, 5, 6 ]
+//[ 1, 2, 3, 4, 5, 6 ]
+
 
 console.log(arrFunc.filter(array, item => item > 4)); // [ 5, 6 ]
 
