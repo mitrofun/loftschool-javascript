@@ -2,18 +2,23 @@ require([
 
     'js/modules/constructor.js',
     'js/modules/destructor.js',
+    'js/modules/counter.js',
 
 ],
-    function(add, del){
+    function(adder, remove, scanner){
+
         var listFirst = document.querySelector('.first__objects');
         var listSecond = document.querySelector('.second__objects');
         var listSecondRecursion = document.querySelector('.second-recursion__objects');
+        
         var newLi = document.createElement('li');
-
         newLi.innerHTML = 'New element';
-        add.prepend(listFirst, newLi);
+        
+        adder.prepend(listFirst, newLi);
 
-        del.deleteTextNodes(listSecond);
-        del.deleteTextNodes(listSecondRecursion, true);
+        remove.deleteTextNodes(listSecond);
+        remove.deleteTextNodes(listSecondRecursion, true);
+
+        scanner.scanDOM(document);
     }
 );
