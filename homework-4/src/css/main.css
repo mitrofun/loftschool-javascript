@@ -1,0 +1,24 @@
+body {
+    background: #f3df49;
+    color: #2e2e2c;
+    font-size: 21px;
+    font-family: Helvetica, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+}
+
+.homework__title {
+    text-align: center;
+}
+
+.item__elements {
+    padding-left: 1em;
+}
