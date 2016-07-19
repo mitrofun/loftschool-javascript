@@ -1,0 +1,21 @@
+{
+  "name": "homework-4",
+  "description": "",
+  "main": "src/main.js",
+  "authors": [
+    "mitri4 <mitri4@bk.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/mitrofun/loftschool-javascript",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/app/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.2.0"
+  }
+}
