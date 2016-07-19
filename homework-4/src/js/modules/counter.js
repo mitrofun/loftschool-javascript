@@ -44,8 +44,9 @@ define(["js/modules/counter.js"], function(){
 
     }
 
-    function reportToConsole(obj) {
-        console.log('=======Отчет по странице=======');
+    function reportToConsole(obj, element) {
+
+        console.log('======= Отчет по',element.nodeName,'=======');
         for (var key in obj.tags) {
             console.log('Тэгов', key,':', obj.tags[key])
         }
@@ -55,7 +56,7 @@ define(["js/modules/counter.js"], function(){
         for (var key in obj.class) {
             console.log('Элементов с классом',key,':', obj.class[key])
         }
-        console.log('=======Отчет окончен=======');
+        console.log('======= Отчет по', element.nodeName,'окончен =======');
     }
 
 
@@ -76,7 +77,7 @@ define(["js/modules/counter.js"], function(){
 
     function scanDOM(element) {
         scan(element);
-        reportToConsole(counter);
+        reportToConsole(counter, element);
 
         counter = {
             tags: {},
