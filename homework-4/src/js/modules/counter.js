@@ -59,7 +59,7 @@ define(["js/modules/counter.js"], function(){
     }
 
 
-    function scanDOM(element) {
+    function scan(element) {
 
        for (var i = element.childNodes.length - 1; i >= 0; i--) {
 
@@ -68,14 +68,22 @@ define(["js/modules/counter.js"], function(){
            countElement(el);
 
            if (el.childNodes.length) {
-               scanDOM(el);
+               scan(el);
            }
        }
 
-       if (element == document) {
-           reportToConsole(counter);
-       }
    }
+
+    function scanDOM(element) {
+        scan(element);
+        reportToConsole(counter);
+
+        counter = {
+            tags: {},
+            class: {},
+            texts: {}
+        };
+    }
 
 
     return {
