@@ -1,5 +1,9 @@
-var button = document.querySelector('.generator__btn');
-var container = document.querySelector('.container');
+var buttonCreate = document.querySelector('.generator__btn');
+var buttonClean = document.querySelector('.generator__clean');
+var container = document.querySelector('.container__shape');
+let activeElement = null,
+    cX = 0,
+    cY = 0;
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -31,10 +35,11 @@ function getRandomColor() {
 }
 
 function createShape() {
+    var width, height, top ,left;
     var shape = document.createElement('div');
     var maxWidth = document.documentElement.clientWidth;
     var maxHeight = document.documentElement.clientHeight;
-    var width, height, top ,left;
+
 
     width = getRandom(0, maxWidth);
     height = getRandom(0, maxHeight);
@@ -54,4 +59,34 @@ function createShape() {
 
 }
 
-button.addEventListener('click', createShape);
+function removeAllShape() {
+    for (var i = container.childElementCount - 1; i >= 0; i--) {
+        console.log(container.children[i]);
+        container.removeChild(container.children[i]);
+    }
+}
+
+function mouseDown(e) {
+  activeElement = e.target;
+  cX = e.offsetX;
+  cY = e.offsetY;
+}
+
+function mouseUp() {
+  activeElement = null;
+}
+
+function mouseMove(e) {
+  if (activeElement) {
+    activeElement.style.left = toPx(e.clientX - cX);
+    activeElement.style.top = toPx(e.clientY - cY);
+  }
+}
+
+
+
+buttonCreate.addEventListener('click', createShape);
+buttonClean.addEventListener('click', removeAllShape);
+container.addEventListener('mousedown', mouseDown);
+container.addEventListener('mouseup', mouseUp);
+container.addEventListener('mousemove', mouseMove);

@@ -300,10 +300,19 @@ body {
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 .generator__btn:hover {
   background: #999dff;
+}
+
+.generator__clean {
+  text-decoration: none;
+  font-size: .8em;
+  color: #535c67;
+}
+.generator__clean:hover {
+  text-decoration: underline;
 }
 
 .shape {
