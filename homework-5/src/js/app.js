@@ -7,7 +7,6 @@ let activeElement = null,
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-
 }
 
 function toPx(val) {
@@ -48,15 +47,11 @@ function createShape() {
 
     shape.style.width = toPx(width);
     shape.style.height = toPx(height);
-
     shape.style.top = toPx(top);
     shape.style.left = toPx(left);
-
     shape.style.background = getRandomColor();
-
     shape.className = 'shape';
     container.appendChild(shape);
-
 }
 
 function removeAllShape() {
@@ -67,22 +62,25 @@ function removeAllShape() {
 }
 
 function mouseDown(e) {
-  activeElement = e.target;
-  cX = e.offsetX;
-  cY = e.offsetY;
+    activeElement = e.target;
+    activeElement.ondragstart = function() {
+        return false;
+    };
+
+    cX = e.offsetX;
+    cY = e.offsetY;
 }
 
 function mouseUp() {
-  activeElement = null;
+    activeElement = null;
 }
 
 function mouseMove(e) {
-  if (activeElement) {
-    activeElement.style.left = toPx(e.clientX - cX);
-    activeElement.style.top = toPx(e.clientY - cY);
-  }
+    if (activeElement) {
+        activeElement.style.left = toPx(e.clientX - cX);
+        activeElement.style.top = toPx(e.clientY - cY);
+    }
 }
-
 
 
 buttonCreate.addEventListener('click', createShape);
