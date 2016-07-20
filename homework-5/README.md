@@ -10,3 +10,10 @@ https://github.com/mitrofun/accordion
 Цвет фона div'а должен быть каждый раз случайным.
 Созданные div'ы можно перетаскивать мышкой (drag & drop)
 
+###Installation & Run
+
+```
+git clone https://github.com/mitrofun/loftschool-javascript.git
+cd loftschool-javascript/homework-5
+bin/install.sh
+```
