@@ -14,6 +14,5 @@ https://github.com/mitrofun/accordion
 
 ```
 git clone https://github.com/mitrofun/loftschool-javascript.git
-cd loftschool-javascript/homework-5
-bin/install.sh
+cd loftschool-javascript/homework-5 && bin/install.sh
 ```
