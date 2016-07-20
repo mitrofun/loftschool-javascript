@@ -37,8 +37,13 @@ function watch() {
   return compile(true);
 }
 
-// Compile CSS from SCSS compass for development
 gulp.task('css', function() {
+    return gulp.src('src/css/*.*')
+        .pipe(gulp.dest('build/css'));
+});
+
+// Compile CSS from SCSS compass for development
+gulp.task('css-compass', function() {
   return gulp.src('src/sass/**/*.scss')
     .pipe(compass({
         config_file: 'config.rb',
