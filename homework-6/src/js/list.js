@@ -1,5 +1,5 @@
 let cityJSON = "https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json";
-let button = document.querySelector('.cities__btn');
+let button = document.querySelector('.city__btn');
 
 function sendAJAX(url) {
     return new Promise((resolve, reject) => {
@@ -28,7 +28,7 @@ function sortCityByName(array) {
     });
 }
 
-function displayListOfCities(obj) {
+function displayListOfCity(obj) {
 
     let listCity = document.querySelector('.cities__list');
 
@@ -57,7 +57,7 @@ button.addEventListener("click", () => {
 
     }).then(response => {
 
-        displayListOfCities(response);
+        displayListOfCity(response);
 
     });
 });
