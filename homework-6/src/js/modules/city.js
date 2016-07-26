@@ -1,6 +1,3 @@
-let cityJSON = "https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json";
-let button = document.querySelector('#getCityList');
-
 function sendAJAX(url) {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
@@ -48,15 +45,26 @@ function displayListOfCity(obj) {
     }
 }
 
-button.addEventListener("click", () => {
-    sendAJAX(cityJSON).then(response => {
+function searchCity(array, keyword){
 
-        sortCityByName(response);
-        return response;
+    let result =[];
 
-    }).then(response => {
+    if (keyword.length == 0 || keyword == ' ') {
+        return result;
+    }
 
-        displayListOfCity(response);
+    for (let i = 0; i < array.length; i++) {
+            let re = new RegExp(keyword, "i");
+            if (re.test(array[i]["name"])) {
+                result.push(array[i]);
+            }
+    }
 
-    });
-});
+    if (keyword.length > 0 && !result.length) {
+        result = [{name:'Not found'}];
+    }
+
+    return result;
+}
+
+export { sendAJAX , sortCityByName, displayListOfCity, searchCity }
