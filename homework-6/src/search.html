@@ -2,18 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 6 - Search</title>
+    <title>Search | Homework 6</title>
+    <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
 </head>
 <body>
-    <div class="container">
-
-        <div class="nav">
-            <a href="index.html" class="nav__link">first</a>
-            <a href="search.html" class="nav__link nav__link_active">second</a>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="index.html" class="nav__link ">list</a>
+                        </li>
+                        <li class="nav__item nav__item_active">
+                            <a href="search.html" class="nav__link">search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="container">
+                <div class="panel__search">
+                    <div class="panel___header panel___header_green">
+                        <h3 class="panel__title">Find location</h3>
+                    </div>
+                    <div class="panel__body">
+                        <form class="form__search" action="">
+                            <input class="city__search" placeholder="Find Location" type="text">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <input class="city__search" type="text">
     </div>
+    <script src="js/search.js"></script>
 </body>
-<script src="js/search.js"></script>
 </html>

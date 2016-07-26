@@ -1,0 +1,88 @@
+.panel__list,
+.panel__search {
+  @include span(6);
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
+}
+
+.panel___header {
+  border-bottom: 1px solid #EAEAEA;
+}
+
+.panel___header_green {
+  border-bottom: 0;
+  background: #7ED321;
+  .panel__title {
+    color: #fff;
+  }
+}
+
+.panel__title {
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.panel__body {
+  padding-top: 0.875rem;
+}
+
+.panel__btn {
+  outline: 0;
+  margin: 1rem 0;
+  border: none;
+  background: #7ED321;
+  color: #fff;
+  font-family: "LatoWebBold", sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.85rem 5rem;
+  border-radius: 1.5rem;
+  transition: .6s;
+  &:hover {
+    background: #5D9C17;
+  }
+}
+
+.panel__btn_block {
+  display: block;
+  padding: 0.85rem 0;
+  margin: 1rem auto;
+  width: 85%;
+}
+
+.city__item {
+  text-align: left;
+  padding: 1.25rem 0 1.25rem 6rem;
+  color: #7ED321;
+  font-size: 1rem;
+  font-family: "LatoWebBold", sans-serif;
+  border-top: 1px solid #EAEAEA;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: url("../svg/marker.svg") no-repeat;
+    width: .75rem;
+    height: 1.25rem;
+    left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.form__search {
+  padding: 0.85rem 0;
+}
+
+
+.city__search {
+  outline: 0;
+  width: 85%;
+  margin: 1rem auto;
+  padding: 0.85rem 2rem;
+  border: 2px solid #EAEAEA;
+  border-radius: 1.5rem;
+  color: #656D78;
+}

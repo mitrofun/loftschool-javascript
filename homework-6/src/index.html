@@ -2,18 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 6 - List</title>
+    <title>List | Homework 6</title>
+    <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
 </head>
 <body>
-    <div class="container">
-
-        <div class="nav">
-            <a href="index.html" class="nav__link nav__link_active">first</a>
-            <a href="search.html" class="nav__link">second</a>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item nav__item_active">
+                            <a href="index.html" class="nav__link ">list</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="search.html" class="nav__link">search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+            <div class="content">
+                <div class="container">
+                    <div class="panel__list">
+                        <div class="panel___header">
+                            <h3 class="panel__title">City list</h3>
+                        </div>
+                        <div class="panel__body">
+                            <button id="getCityList" class="panel__btn panel__btn_block">Get</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <button class="city__btn">Get</button>
-    </div>
+    <script src="js/list.js"></script>
 </body>
-<script src="js/list.js"></script>
+
 </html>

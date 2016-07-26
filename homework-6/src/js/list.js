@@ -1,5 +1,5 @@
 let cityJSON = "https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json";
-let button = document.querySelector('.city__btn');
+let button = document.querySelector('#getCityList');
 
 function sendAJAX(url) {
     return new Promise((resolve, reject) => {
@@ -19,7 +19,6 @@ function sendAJAX(url) {
 }
 
 function sortCityByName(array) {
-
     return array.sort(function(a, b) {
         var x = a['name']; var y = b['name'];
         if (x < y) return -1;
@@ -30,12 +29,12 @@ function sortCityByName(array) {
 
 function displayListOfCity(obj) {
 
-    let listCity = document.querySelector('.cities__list');
+    let listCity = document.querySelector('.city__list');
 
     if (!listCity) {
         listCity = document.createElement('ul');
-        let container = document.querySelector('.container');
-        listCity.classList.add('cities__list');
+        let container = document.querySelector('.panel__body');
+        listCity.classList.add('city__list');
         container.appendChild(listCity);
     } else {
         listCity.innerHTML = "";
@@ -43,7 +42,7 @@ function displayListOfCity(obj) {
 
     for({name} of obj) {
         let el = document.createElement('li');
-        el.classList.add('cities__item');
+        el.classList.add('city__item');
         el.innerText = name;
         listCity.appendChild(el);
     }
