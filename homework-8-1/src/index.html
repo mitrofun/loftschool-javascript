@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List | Homework 8-1 Handlebars</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item nav__item_active">
+                            <a href="index.html" class="nav__link ">list</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="search.html" class="nav__link">search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+            <div class="content">
+                <div class="container">
+                    <div class="panel__list">
+                        <div class="panel___header">
+                            <h3 class="panel__title">City list</h3>
+                        </div>
+                        <div class="panel__body">
+                            <button id="getCityList" class="panel__btn panel__btn_block">Get</button>
+                            <div id="cityList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- build:js -->
+    <script src="js/page/list.js"></script>
+    <!-- endbuild -->
+
+    <script id="city-template" type="text/x-handlebars-template">
+      <ul class="city__list">
+          {{#each .}}
+          <li class="city__item">{{ name }}</li>
+          {{/each}}
+      </ul>
+    </script>
+
+</body>
+
+</html>

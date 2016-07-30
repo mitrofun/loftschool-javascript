@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search | Homework 8-1 Handlebars</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="index.html" class="nav__link ">list</a>
+                        </li>
+                        <li class="nav__item nav__item_active">
+                            <a href="search.html" class="nav__link">search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="container">
+                <div class="panel__search">
+                    <div class="panel___header panel___header_green">
+                        <h3 class="panel__title">Find location</h3>
+                    </div>
+                    <div class="panel__body">
+                        <form class="form__search" action="">
+                            <input class="city__search" placeholder="Find Location" type="text">
+                            <div id="cityList"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- build:js -->
+    <script src="js/page/search.js"></script>
+    <!-- endbuild -->
+
+    <script id="city-template" type="text/x-handlebars-template">
+      <ul class="city__list">
+          {{#each .}}
+          <li class="city__item">{{ name }}</li>
+          {{/each}}
+      </ul>
+    </script>
+
+</body>
+</html>

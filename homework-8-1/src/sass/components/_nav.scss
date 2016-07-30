@@ -1,0 +1,27 @@
+.nav {
+  font-size: 0;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
+}
+
+.nav__item {
+  display: inline-block;
+  border-right: 1px solid #EAEAEA;
+  &_active {
+    background: #F8F8F8;
+    box-shadow: 0 -3px 0 0 #7ED321 inset;
+    .nav__link {
+      color: #7ED321;
+      font-family: "LatoWebBold", sans-serif;
+    }
+  }
+}
+
+.nav__link {
+  font-size: 0.875rem;
+  display: block;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #656D78;
+  padding: 1.2rem 2rem;
+}
