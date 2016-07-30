@@ -22,7 +22,7 @@ function delCookie(e) {
     if (isLink(e.target)) {
 
         let nameCookie = e.target.parentNode.parentNode.firstChild.textContent;
-        let confirmDelete = confirm(`Удалить cookie ${nameCookie} ?`);
+        let confirmDelete = confirm(`Delete cookie ${nameCookie} ?`);
 
         if (confirmDelete) {
             _delCookeByName(nameCookie);
@@ -41,10 +41,22 @@ function createCookie(e) {
     let value = document.querySelector('#value');
     let days = document.querySelector('#days');
 
-    console.log(name);
 
-    if (name.value) {
-        document.cookie =`${name.value}=${name.value}`
+    if (name.value && value.value && days.value) {
+        if (typeof (days.value * 1) == "number") {
+            let date = new Date;
+            date.setDate(date.getDate() + days.value * 1);
+            document.cookie =`${name.value}=${value.value}; expires=${date.toUTCString()}`;
+            displayElement(name.value, value.value, true);
+            name.value = '';
+            value.value = '';
+            days.value ='';
+        } else {
+            alert('The days field is not a number.Enter the number!');
+        }
+
+    } else {
+        alert('Fill all fields');
     }
 
     e.preventDefault();
