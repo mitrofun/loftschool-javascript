@@ -30,6 +30,24 @@ function delCookie(e) {
         }
     }
 
+    e.preventDefault();
 }
 
-export { getCookie , delCookie }
+
+function createCookie(e) {
+    console.log(e.target);
+
+    let name = document.querySelector('#name');
+    let value = document.querySelector('#value');
+    let days = document.querySelector('#days');
+
+    console.log(name);
+
+    if (name.value) {
+        document.cookie =`${name.value}=${name.value}`
+    }
+
+    e.preventDefault();
+}
+
+export { getCookie , delCookie, createCookie }
