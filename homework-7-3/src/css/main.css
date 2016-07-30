@@ -306,6 +306,21 @@ body {
   background: #999dff;
 }
 
+.generator__btn_save {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em;
+  background: #66ff8b;
+  color: #fff;
+  -moz-border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  margin-bottom: 0.5em;
+}
+.generator__btn_save:hover {
+  background: rgba(102, 255, 139, 0.62);
+}
+
 .generator__clean {
   text-decoration: none;
   font-size: .8em;

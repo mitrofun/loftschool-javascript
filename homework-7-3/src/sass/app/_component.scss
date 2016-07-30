@@ -29,6 +29,21 @@
   }
 }
 
+
+.generator__btn_save {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em;
+  background: #66ff8b;
+  color: #fff;
+  @include border-radius(.2em);
+  margin-bottom: 0.5em;
+
+  &:hover {
+    background: rgba(102, 255, 139, 0.62);
+  }
+}
+
 .generator__clean {
   text-decoration: none;
   font-size: .8em;

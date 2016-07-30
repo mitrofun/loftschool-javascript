@@ -1,4 +1,9 @@
 function toPx(val) {
+    
+    if (typeof val=='string' && val.indexOf('px')) {
+        return val
+    }
+    
     return val + 'px';
 }
 
