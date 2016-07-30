@@ -1,0 +1,6 @@
+body {
+  color: #2e2e2c;
+  background-color: rgb(88,75,169); // Old browsers
+  @include filter-gradient(#584ba9, #7238a3, vertical); // IE6-9
+  @include background-image(linear-gradient(top, rgba(88,75,169,1) 0%,rgba(98,66,164,1) 40%,rgba(107,51,152,1) 66%,rgba(114,56,163,1) 100%));
+}

@@ -35,4 +35,15 @@ function isLink(link) {
     return link.tagName=='A';
 }
 
-export { displayElement, deleteElement, isLink }
+function clearInput() {
+    let length =arguments.length;
+    
+    if (length ) {
+        for (let i=0; i < length; i++ ) {
+            arguments[i].value = '';
+        }
+        
+    }
+}
+
+export { displayElement, deleteElement, isLink, clearInput }

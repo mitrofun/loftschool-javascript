@@ -1,4 +1,4 @@
-import {displayElement, deleteElement , isLink} from './ui'
+import {displayElement, deleteElement , isLink, clearInput} from './ui'
 
 function getCookie() {
     let cookie = document.cookie.split(';');
@@ -35,7 +35,7 @@ function delCookie(e) {
 
 
 function createCookie(e) {
-    console.log(e.target);
+    // console.log(e.target);
 
     let name = document.querySelector('#name');
     let value = document.querySelector('#value');
@@ -49,10 +49,8 @@ function createCookie(e) {
             document.cookie =`${name.value}=${value.value}; expires=${date.toUTCString()}`;
             displayElement(name.value, value.value, true);
 
-            name.value = '';
-            value.value = '';
-            days.value ='';
-            
+            clearInput(name, value , days);
+
         } else {
             alert('The days field is not a number.Enter the number!');
         }

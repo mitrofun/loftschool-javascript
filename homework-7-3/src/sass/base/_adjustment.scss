@@ -1,0 +1,26 @@
+/* ----- adjustment ----- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.125em;
+  line-height: 1.42;
+  font-family: "Museo Sans Cyrl 500",sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
