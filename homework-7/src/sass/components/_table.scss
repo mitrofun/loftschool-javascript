@@ -1,0 +1,17 @@
+@import "../helpers/variables";
+.cookie-table {
+
+  &__head {
+    border-bottom: 1px solid $gray;
+    text-transform: capitalize;
+  }
+  &__title-cell {
+    padding: 1rem;
+  }
+  &__body-cell {
+    padding: 1rem;
+  }
+  &__body-row {
+    border-bottom: 1px solid $gray;
+  }
+}

@@ -1,0 +1,38 @@
+@import "../helpers/variables";
+
+h1 {
+  color: $black;
+  font-family: "sfns_displayregular", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+h2 {
+  color:  $black;
+  font-family: "sfns_displayregular", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+p {
+  color:  $black;
+  font-family: 'Raleway',sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 0 0 24px;
+}
+
+
+a {
+  color:  $black;
+  text-decoration: underline;
+  &:hover {
+    color: $orange;
+    text-decoration: underline;
+  }
+}

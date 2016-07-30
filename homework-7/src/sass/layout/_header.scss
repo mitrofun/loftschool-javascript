@@ -1,0 +1,11 @@
+@import "../helpers/variables";
+
+.header {
+  background: $orange;
+  border-top: 4px solid $purple;
+  margin-bottom: 2rem;
+}
+
+.header__title {
+  padding-bottom: 1.5rem;
+}

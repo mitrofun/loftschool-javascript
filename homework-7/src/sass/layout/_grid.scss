@@ -1,0 +1,20 @@
+/* ----- grid ----- */
+
+@import "susy";
+
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+  container: 960px,
+  global-box-sizing: border-box,
+  //debug: (
+  //  image: show,
+  //  color: rgba(#999dff, .5),
+  //  output: background,
+  //  //toggle: top right,
+  //),
+);
+
+.container {
+  @include container;
+}
