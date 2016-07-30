@@ -1,4 +1,4 @@
-import {displayElement} from './ui'
+import {displayElement, deleteElement , isLink} from './ui'
 
 function getCookie() {
     let cookie = document.cookie.split(';');
@@ -11,21 +11,23 @@ function getCookie() {
     }
 }
 
-function delCookeByName(name) {
+function _delCookeByName(name) {
     let date = new Date(0);
     document.cookie = name+"=; expires=" + date.toUTCString();
 }
 
 
 function delCookie(e) {
-    let tableBody = document.querySelector('.cookie-table__body');
 
-    let nameCookie = e.target.parentNode.parentNode.firstChild.textContent;
-    let confirmDelete = confirm(`Удалить cookie ${nameCookie} ?`);
+    if (isLink(e.target)) {
 
-    if (confirmDelete) {
-        delCookeByName(nameCookie);
-        tableBody.removeChild(e.target.parentNode.parentNode);
+        let nameCookie = e.target.parentNode.parentNode.firstChild.textContent;
+        let confirmDelete = confirm(`Удалить cookie ${nameCookie} ?`);
+
+        if (confirmDelete) {
+            _delCookeByName(nameCookie);
+            deleteElement(e.target.parentNode.parentNode);
+        }
     }
 
 }

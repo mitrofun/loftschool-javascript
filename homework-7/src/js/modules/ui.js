@@ -1,5 +1,7 @@
+let tableBody = document.querySelector('.cookie-table__body');
+
 function displayElement() {
-    let tableBody = document.querySelector('.cookie-table__body');
+
     let row = document.createElement('tr');
     row.classList.add('cookie-table__body-row');
 
@@ -16,10 +18,8 @@ function displayElement() {
             delBtn.classList.add('delete__cookie');
             delBtn.textContent = 'delete';
             delBtn.setAttribute('href', 'javascript: void(0);');
-
             cell.appendChild(delBtn);
         }
-
         row.appendChild(cell);
     }
 
@@ -27,4 +27,12 @@ function displayElement() {
 }
 
 
-export { displayElement }
+function deleteElement(el) {
+    tableBody.removeChild(el);
+}
+
+function isLink(link) {
+    return link.tagName=='A';
+}
+
+export { displayElement, deleteElement, isLink }
