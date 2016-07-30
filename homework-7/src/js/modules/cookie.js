@@ -48,9 +48,11 @@ function createCookie(e) {
             date.setDate(date.getDate() + days.value * 1);
             document.cookie =`${name.value}=${value.value}; expires=${date.toUTCString()}`;
             displayElement(name.value, value.value, true);
+
             name.value = '';
             value.value = '';
             days.value ='';
+            
         } else {
             alert('The days field is not a number.Enter the number!');
         }
