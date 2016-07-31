@@ -1,5 +1,5 @@
-import { sendAJAX, sortCityByName, displayListOfCity , displayListOfCityByHandlebars, searchCity } from './modules/city'
-import { timer } from './modules/time'
+import { sendAJAX, sortCity, displayListOfCityByHandlebars, searchCity } from './modules/city'
+
 
 let cityJSON = "https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json";
 let input = document.querySelector('.city__search');
@@ -9,10 +9,12 @@ if (!!button) {
     button.addEventListener("click", () => {
     sendAJAX(cityJSON).then(response => {
 
-        sortCityByName(response);
+        sortCity(response);
         return response;
 
-    }).then(response => {
+    },
+    error => alert(`Rejected: ${error}`)
+    ).then(response => {
         
         displayListOfCityByHandlebars(response)
 
@@ -24,10 +26,12 @@ if (!!button) {
 window.addEventListener("load", () => {
     sendAJAX(cityJSON).then(response => {
 
-        sortCityByName(response);
+        sortCity(response);
         return response;
 
-    }).then(response => {
+    },
+    error => alert(`Rejected: ${error}`)
+    ).then(response => {
         if (input) {
             input.addEventListener("input", () =>{
                 
@@ -37,6 +41,3 @@ window.addEventListener("load", () => {
         }
     })
 });
-
-window.timer = timer;
-// timer(3000).then((time) => console.log(`я вывелась через ${time/1000} сек.`));

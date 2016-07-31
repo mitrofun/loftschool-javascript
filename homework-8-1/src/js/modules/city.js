@@ -8,43 +8,31 @@ function sendAJAX(url) {
         xhr.responseType = 'json';
         
         xhr.addEventListener('load', ()=> {
-            resolve(xhr.response);
+
+            if (xhr.status == 200) {
+                resolve(xhr.response);
+            } else {
+                let error = new Error(xhr.statusText);
+                error.code = xhr.status;
+                reject(error);
+            }
+
         });
+
         xhr.addEventListener('error', ()=> {
-            reject(xhr);
+            reject(new Error("Network Error"));
         });
         xhr.send();
     })
 }
 
-function sortCityByName(array) {
-    return array.sort(function(a, b) {
+function sortCity(array) {
+    array.sort(function(a, b) {
         var x = a['name']; var y = b['name'];
         if (x < y) return -1;
         if (x > y) return 1;
         else return 0;
     });
-}
-
-function displayListOfCity(obj) {
-
-    let listCity = document.querySelector('.city__list');
-
-    if (!listCity) {
-        listCity = document.createElement('ul');
-        let container = document.querySelector('.panel__body');
-        listCity.classList.add('city__list');
-        container.appendChild(listCity);
-    } else {
-        listCity.innerHTML = "";
-    }
-
-    for({name} of obj) {
-        let el = document.createElement('li');
-        el.classList.add('city__item');
-        el.innerText = name;
-        listCity.appendChild(el);
-    }
 }
 
 function displayListOfCityByHandlebars(data) {
@@ -80,4 +68,4 @@ function searchCity(array, keyword){
     return result;
 }
 
-export { sendAJAX , sortCityByName, displayListOfCity, searchCity, displayListOfCityByHandlebars }
+export { sendAJAX , sortCity, searchCity, displayListOfCityByHandlebars }
