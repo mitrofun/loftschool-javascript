@@ -26,13 +26,14 @@ function sendAJAX(url) {
     })
 }
 
-function sortCity(array) {
-    array.sort(function(a, b) {
-        var x = a['name']; var y = b['name'];
-        if (x < y) return -1;
-        if (x > y) return 1;
-        else return 0;
-    });
+function CityToSortArray(array) {
+    let newArr = array.map(function(item){
+        return item.name
+    })
+    .sort();
+    // console.log(newArr);
+    return newArr
+
 }
 
 function displayListOfCityByHandlebars(data) {
@@ -56,16 +57,16 @@ function searchCity(array, keyword){
 
     for (let i = 0; i < array.length; i++) {
             let re = new RegExp(keyword, "i");
-            if (re.test(array[i]["name"])) {
+            if (re.test(array[i])) {
                 result.push(array[i]);
             }
     }
 
     if (keyword.length > 0 && !result.length) {
-        result = [{name:'Not found'}];
+        result = ['Not found'];
     }
 
     return result;
 }
 
-export { sendAJAX , sortCity, searchCity, displayListOfCityByHandlebars }
+export { sendAJAX , CityToSortArray, searchCity, displayListOfCityByHandlebars }

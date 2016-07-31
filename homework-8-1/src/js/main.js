@@ -1,4 +1,4 @@
-import { sendAJAX, sortCity, displayListOfCityByHandlebars, searchCity } from './modules/city'
+import { sendAJAX, CityToSortArray, displayListOfCityByHandlebars, searchCity } from './modules/city'
 
 
 let cityJSON = "https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json";
@@ -8,9 +8,8 @@ let button = document.querySelector('#getCityList');
 if (!!button) {
     button.addEventListener("click", () => {
     sendAJAX(cityJSON).then(response => {
-
-        sortCity(response);
-        return response;
+        
+        return CityToSortArray(response);
 
     },
     error => alert(`Rejected: ${error}`)
@@ -25,9 +24,8 @@ if (!!button) {
 
 window.addEventListener("load", () => {
     sendAJAX(cityJSON).then(response => {
-
-        sortCity(response);
-        return response;
+        
+        return CityToSortArray(response);
 
     },
     error => alert(`Rejected: ${error}`)
