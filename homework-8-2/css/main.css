@@ -1,0 +1,389 @@
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.0 | HTML5 Display Definitions | MIT License | git.io/normalize */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+/*! normalize.css v3.0.0 | Base | MIT License | git.io/normalize */
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/*! normalize.css v3.0.0 | Links | MIT License | git.io/normalize */
+a {
+  background: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/*! normalize.css v3.0.0 | Typography | MIT License | git.io/normalize */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/*! normalize.css v3.0.0 | Embedded Content | MIT License | git.io/normalize */
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/*! normalize.css v3.0.0 | Figures | MIT License | git.io/normalize */
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/*! normalize.css v3.0.0 | Forms | MIT License | git.io/normalize */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+/*! normalize.css v3.0.0 | Tables | MIT License | git.io/normalize */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+.container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ----- adjustment ----- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.42;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.footer {
+  min-height: 90px;
+  width: 100%;
+  margin-top: -90px;
+  position: relative;
+}
+
+/* ----- grid ----- */
+.container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.app__sidebar {
+  position: fixed;
+  width: 80px;
+  background: #1d232a;
+  min-height: 704px;
+}
+
+.friends__sidebar {
+  width: 80px;
+  background: #242a31;
+  min-height: 704px;
+  margin-left: 80px;
+  min-width: 360px;
+}
+
+.sidebar__search {
+  border-bottom: 1px solid #40464c;
+}
+
+.friends__list {
+  height: 626px;
+  overflow: auto;
+}
+
+.friends-link {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.friend__data {
+  padding: 5px 20px 0;
+}
+
+.friends__online {
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background: #2dc100;
+  position: absolute;
+  left: -6px;
+  top: 13px;
+}
+
+.friend__img {
+  display: inline-block;
+  vertical-align: middle;
+  border-bottom: 1px solid #40464c;
+  padding: 20px 0;
+  position: relative;
+}
+
+.friend__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.friends__age {
+  font-size: 12px;
+  color: #868a8d;
+}
+
+.friend__bdate {
+  font-size: 12px;
+  color: #868a8d;
+}
+
+.friend__img-link {
+  border-radius: 50%;
+  overflow: hidden;
+  max-width: 50px;
+}
+
+input {
+  outline: none;
+}
+
+.search__input {
+  padding: 8px 20px;
+  width: 87.5%;
+  margin: 20px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #363d45;
+  color: #7b8184;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-width: 1px 1px 1px 2px;
+  background-color: rgba(170, 170, 170, 0.45);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-width: 0;
+}
+
+/*# sourceMappingURL=main.css.map */

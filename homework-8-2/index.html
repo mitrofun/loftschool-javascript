@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <!-- --//-- _header --\\---->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1200">
+    <title>VK Friends</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- build:css-->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js" type="text/javascript"></script>
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+  </head>
+  <!-- --\\-- _header --//---->
+  <body>
+    <div class="wrapper">
+      <div class="main-content">
+        <aside class="app__sidebar">
+          <ul class="app__list">
+            <li class="app__item app__item_active"><a href="javascript:void(0)" class="app-link">
+                <div class="app__logo"></div></a></li>
+          </ul>
+        </aside>
+        <aside class="friends__sidebar">
+          <div class="sidebar__search">
+            <input placeholder="Search" class="search__input">
+          </div>
+          <div id="friendsList"></div>
+        </aside>
+      </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script type="text/x-handlebars-template" id="friendsTemplate">
+      <ul id="friendList" class="friends__list">{{#each friend}}
+        <li class="friends__item"><a href="javascript:void(0)" class="friends-link">
+            <div class="friend__data">
+              <div class="friend__img">{{#if online}}
+                <div class="friends__online"></div>{{/if}}<img src="{{photo_50}}" class="friend__img-link">
+              </div>
+              <div class="friend__text">
+                <div class="friend__name">{{first_name}} {{ last_name }}</div>{{#if _age}}
+                <div class="friends__age">{{_age}}</div>{{/if}}
+                <div class="friend__bdate">{{#if bdate}}{{ bdate }}{{else}}н.д.{{/if}}</div>
+              </div>
+            </div></a></li>{{/each}}
+      </ul>
+    </script>
+  </body>
+</html>
