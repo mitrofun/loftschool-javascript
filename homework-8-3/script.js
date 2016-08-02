@@ -79,6 +79,7 @@ new Promise(function(resolve) {
     toSong('next');
   }
 
+
   prevSongButton.addEventListener('click', function() {
     toSong('prev')
   });
@@ -100,7 +101,7 @@ new Promise(function(resolve) {
   });
 
   document.addEventListener('keydown', function(e) {
-    console.log(e)
+    console.log(e);
     if (e.target.tagName !== 'INPUT') {
       switch (e.keyCode) {
         case 32: {
@@ -130,7 +131,45 @@ new Promise(function(resolve) {
   globalPlayer.addEventListener('timeupdate', onProgress);
   globalPlayer.addEventListener('ended', onEnd);
 
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ START MY CODE HERE +++++++++++++++++++++++++++++++++++++
+
   results.addEventListener('click', function(e) {
+
+    // console.dir(e.target);
+
+    if (e.target.className == 'progress' || e.target.getAttribute('data-role') == 'progressbar') {
+
+        let currentItem = e.target.parentNode.parentNode.parentNode;
+
+        if (currentItem.tagName != 'LI') {
+            currentItem = e.target.parentNode.parentNode.parentNode.parentNode;
+        }
+
+        if (currentItem.querySelector('.glyphicon-pause')) {
+
+            let progressBar, totalWidth, currentWidth, rate;
+
+            if (e.target.className == 'progress') {
+                progressBar = e.target;
+            }
+
+            if (e.target.getAttribute('data-role') == 'progressbar') {
+
+                progressBar = e.target.parentNode;
+
+            }
+
+            totalWidth = progressBar.clientWidth;
+            currentWidth = e.offsetX;
+            rate = (currentWidth / totalWidth);
+
+            globalPlayer.currentTime = globalPlayer.duration * rate;
+
+        }
+    }
+
+     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ END MY CODE +++++++++++++++++++++++++++++++++++++++++++
+
     if (e.target.getAttribute('data-role') === 'playback') {
       var currentItem = e.target.parentNode.parentNode.parentNode;
 
