@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+
+    <style>
+        .friend {
+            float: left;
+            margin: 15px;
+        }
+        .group__item {
+            margin: 15px;
+        }
+        .group__img {
+            display: inline-block;
+        }
+        .group__name {
+            display: inline-block;
+            margin-left: 15px;
+        }
+        .photo__counter {
+            margin: 15px;
+        }
+        .photo-counter__likes,
+        .photo-counter__comments,
+        .photo-counter__reposts {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="header"></div>
+
+    <div class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-default" onclick="Router.handle('music')">Музыка</button>
+        <button type="button" class="btn btn-default" onclick="Router.handle('friends')">Друзья</button>
+        <button type="button" class="btn btn-default" onclick="Router.handle('news')">Новости</button>
+        <button type="button" class="btn btn-default" onclick="Router.handle('groups')">Группы</button>
+        <button type="button" class="btn btn-default" onclick="Router.handle('photos')">Фото</button>
+    </div>
+    <hr>
+    <div id="results"></div>
+</div>
+
+<script src="model.js"></script>
+<script src="view.js"></script>
+<script src="controller.js"></script>
+<script src="router.js"></script>
+<script src="entry.js"></script>
+
+<script type="text/x-handlebars-template" id="headerTemplate">
+    <h1>Данные из VK-аккаунта: {{first_name}} {{last_name}}</h1>
+</script>
+
+<script type="text/x-handlebars-template" id="musicTemplate">
+    <ul class="list-group" id="audioList">
+        {{#each list}}
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-10">
+                    <span class="title">{{{artist}}} - {{{title}}}</span>
+                </div>
+                <div class="col-xs-2 text-right">{{formatTime duration}}</div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<script type="text/x-handlebars-template" id="friendsTemplate">
+    <div id="friendsList">
+        {{#each list}}
+        <div class="friend text-center">
+            <img src="{{photo_100}}" class="img-circle">
+            <div>{{first_name}}<br>{{last_name}}</div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" id="newsTemplate">
+    <div class="news">
+        {{#each list}}
+        {{#if text}}
+        <div class="post">
+            <b>{{formatDate date}}</b>
+            <div class="post-text">{{{text}}}</div>
+        </div>
+        <hr>
+        {{/if}}
+        {{/each}}
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" id="groupsTemplate">
+    <div class="group__list">
+        {{#each list}}
+        <div class="group__item">
+            <img src="{{photo}}" class="img-circle group__img">
+            <div class="group__name">{{name}}</div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" id="photosTemplate">
+    <div class="photos__list">
+        {{#each list}}
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+         <div class="photo__item thumbnail">
+            <img src="{{src_xbig}}" class="photo__img">
+            <div class="photo__counter">
+                <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
+                <div class="photo-counter__likes">{{likes.count}}</div>
+                <i class="glyphicon glyphicon-comment" aria-hidden="true"></i>
+                <div class="photo-counter__comments">{{comments.count}}</div>
+                <i class="glyphicon glyphicon-share" aria-hidden="true"></i>
+                <div class="photo-counter__reposts">{{reposts.count}}</div>
+            </div>
+
+            </div>
+                </div>
+            </div>
+
+        {{/each}}
+    </div>
+</script>
+
+</body>
+</html>
