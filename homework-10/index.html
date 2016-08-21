@@ -31,6 +31,9 @@
             display: inline-block;
             margin-right: 15px;
         }
+        .media {
+            margin: 15px;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +105,7 @@
     <div class="group__list">
         {{#each list}}
         <div class="group__item">
-            <img src="{{photo}}" class="img-circle group__img">
+            <img src="{{photo_50}}" class="img-circle group__img">
             <div class="group__name">{{name}}</div>
         </div>
         {{/each}}
@@ -112,22 +115,43 @@
 <script type="text/x-handlebars-template" id="photosTemplate">
     <div class="photos__list">
         {{#each list}}
+
+         {{#if photo_604}}
         <div class="row">
             <div class="col-sm-12 col-md-8 col-md-offset-2">
          <div class="photo__item thumbnail">
-            <img src="{{src_xbig}}" class="photo__img">
+            <img src="{{photo_604}}" class="photo__img">
             <div class="photo__counter">
-                <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>
+                <i class="glyphicon glyphicon-heart-empty" aria-hidden="true"></i>
                 <div class="photo-counter__likes">{{likes.count}}</div>
                 <i class="glyphicon glyphicon-comment" aria-hidden="true"></i>
                 <div class="photo-counter__comments">{{comments.count}}</div>
                 <i class="glyphicon glyphicon-share" aria-hidden="true"></i>
                 <div class="photo-counter__reposts">{{reposts.count}}</div>
             </div>
+            {{#if comments.count}}
+            {{#each comments.items}}
+            <div class="media">
+              <div class="media-left">
+                  <img class="media-object" src="{{user.0.photo_50}}">
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">{{user.0.first_name}} {{user.0.last_name}}</h4>
+                  <div class="date">{{formatDate date}}</div>
+                  {{text}}
+              </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="media">
+                <p>К этому фото нет комментариев.</p>
+            </div>
+            {{/if}}
 
             </div>
                 </div>
             </div>
+        {{/if}}
 
         {{/each}}
     </div>

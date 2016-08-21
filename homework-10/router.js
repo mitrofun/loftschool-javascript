@@ -5,7 +5,7 @@ var Router = {
         if (!Controller.hasOwnProperty(routeName)) {
             throw new Error('Маршрут не найден!');
         }
-
+        
         Controller[routeName]();
     }
 };

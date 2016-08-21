@@ -25,8 +25,8 @@ var Model = {
             });
         });
     },
-    getUser: function() {
-        return this.callApi('users.get', {});
+    getUser: function (user = '', fields = '') {
+        return this.callApi('users.get', {user_ids: user, fields: fields});
     },
     getMusic: function() {
         return this.callApi('audio.get', {});
@@ -38,10 +38,13 @@ var Model = {
         return this.callApi('newsfeed.get', {filters: 'post', count: 20});
     },
     getGroups: function() {
-        return this.callApi('groups.get', {extended: true});
+        return this.callApi('groups.get', {extended: true, v: 5.53});
     },
     getPhotos: function() {
-        return this.callApi('photos.get', {album_id:'profile', extended: true});
+        return this.callApi('photos.getAll', {extended: true, count: 200, skip_hidden: true, v: 5.53});
+    },
+    getPhotosComments: function () {
+        return this.callApi('photos.getAllComments', {count: 200, v: 5.53})
     }
-
+    
 };

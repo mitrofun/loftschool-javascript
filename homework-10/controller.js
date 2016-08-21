@@ -17,13 +17,61 @@ var Controller = {
     groupsRoute: function() {
         return Model.getGroups().then(function(groups) {
             // console.log(groups);
-            results.innerHTML = View.render('groups', {list: groups });
+            results.innerHTML = View.render('groups', {list: groups.items });
         });
     },
     photosRoute: function() {
         return Model.getPhotos().then(function(photos) {
+
+            function updateProperty(obj) {
+                for (let i = 0; i < obj.count; i++) {
+
+                    let changedObj = obj.items[i];
+                    changedObj.comments = {
+                        count: 0,
+                        items: []
+                    }
+                }
+            }
+
+            updateProperty(photos);
+            return photos;
+
+        }).then(function (photos) {
+
+            function updateComment(comment) {
+                Model.getUser(comment.from_id, ['photo_50']).then(function (user) {
+                    comment.user = user;
+                })
+            }
+
+            function updatePhoto(comment) {
+                for (let i=photos.count- 1; i >= 0; i--) {
+                    let photo = photos.items[i];
+                    if(photo.id == comment.pid) {
+                        photo.comments.count ++;
+                        photo.comments.items.push(comment);
+                    }
+                }
+            }
+
+            Model.getPhotosComments().then(function(allComments) {
+                for (let i=allComments.count- 1; i >=0; i--) {
+                    let comment = allComments.items[i];
+                    updateComment(comment);
+                    updatePhoto(comment)
+                }
+            });
+            
+            return photos;
+
+        }).then(function (photos) {
             console.log(photos);
-            results.innerHTML = View.render('photos', {list: photos });
+            fn = function () {
+                results.innerHTML = View.render('photos', {list: photos.items});
+            };
+
+            setTimeout(fn, 500);
         });
     }
 };
