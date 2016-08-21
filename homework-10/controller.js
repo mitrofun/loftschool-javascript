@@ -62,15 +62,22 @@ var Controller = {
                     updatePhoto(comment)
                 }
             });
-            
+
             return photos;
 
         }).then(function (photos) {
+
+            Model.getPhotosAlbums().then(function(albums) {
+                allAlbums = albums;
+            });
+
+            let allAlbums = {};
+
             console.log(photos);
             fn = function () {
-                results.innerHTML = View.render('photos', {list: photos.items});
+                console.log(allAlbums);
+                results.innerHTML = View.render('photos', {photos: photos.items, albums:allAlbums.items});
             };
-
             setTimeout(fn, 500);
         });
     }

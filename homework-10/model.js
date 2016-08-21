@@ -45,6 +45,9 @@ var Model = {
     },
     getPhotosComments: function () {
         return this.callApi('photos.getAllComments', {count: 200, v: 5.53})
+    },
+    getPhotosAlbums: function () {
+        return this.callApi('photos.getAlbums', {need_system: true, v: 5.53})
     }
     
 };

@@ -34,6 +34,10 @@
         .media {
             margin: 15px;
         }
+        .well {
+            background-color: #fff;
+        }
+
     </style>
 </head>
 <body>
@@ -114,44 +118,55 @@
 
 <script type="text/x-handlebars-template" id="photosTemplate">
     <div class="photos__list">
-        {{#each list}}
+        {{#each albums}}
 
-         {{#if photo_604}}
-        <div class="row">
-            <div class="col-sm-12 col-md-8 col-md-offset-2">
-         <div class="photo__item thumbnail">
-            <img src="{{photo_604}}" class="photo__img">
-            <div class="photo__counter">
-                <i class="glyphicon glyphicon-heart-empty" aria-hidden="true"></i>
-                <div class="photo-counter__likes">{{likes.count}}</div>
-                <i class="glyphicon glyphicon-comment" aria-hidden="true"></i>
-                <div class="photo-counter__comments">{{comments.count}}</div>
-                <i class="glyphicon glyphicon-share" aria-hidden="true"></i>
-                <div class="photo-counter__reposts">{{reposts.count}}</div>
-            </div>
-            {{#if comments.count}}
-            {{#each comments.items}}
-            <div class="media">
-              <div class="media-left">
-                  <img class="media-object" src="{{user.0.photo_50}}">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">{{user.0.first_name}} {{user.0.last_name}}</h4>
-                  <div class="date">{{formatDate date}}</div>
-                  {{text}}
-              </div>
-            </div>
+        <div class="well">
+           <div class="page-header">
+                <h2>{{title}}</h2>
+           </div>
+
+            {{#each ../photos}}
+                {{#ifCond album_id ../id}}
+
+                     {{#if photo_604}}
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 col-md-offset-2">
+                     <div class="photo__item thumbnail">
+                        <img src="{{photo_604}}" class="photo__img">
+                        <div class="photo__counter">
+                            <i class="glyphicon glyphicon-heart-empty" aria-hidden="true"></i>
+                            <div class="photo-counter__likes">{{likes.count}}</div>
+                            <i class="glyphicon glyphicon-comment" aria-hidden="true"></i>
+                            <div class="photo-counter__comments">{{comments.count}}</div>
+                            <i class="glyphicon glyphicon-share" aria-hidden="true"></i>
+                            <div class="photo-counter__reposts">{{reposts.count}}</div>
+                        </div>
+                        {{#if comments.count}}
+                        {{#each comments.items}}
+                        <div class="media">
+                          <div class="media-left">
+                              <img class="media-object" src="{{user.0.photo_50}}">
+                          </div>
+                          <div class="media-body">
+                            <h4 class="media-heading">{{user.0.first_name}} {{user.0.last_name}}</h4>
+                              <div class="date">{{formatDate date}}</div>
+                              {{text}}
+                          </div>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <div class="media">
+                            <p>К этому фото нет комментариев.</p>
+                        </div>
+                        {{/if}}
+
+                        </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/ifCond}}
             {{/each}}
-            {{else}}
-            <div class="media">
-                <p>К этому фото нет комментариев.</p>
-            </div>
-            {{/if}}
-
-            </div>
-                </div>
-            </div>
-        {{/if}}
+        </div>
 
         {{/each}}
     </div>

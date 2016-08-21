@@ -12,6 +12,13 @@ Handlebars.registerHelper('formatDate', function(ts) {
     return new Date(ts * 1000).toLocaleString();
 });
 
+Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 new Promise(function(resolve) {
     window.onload = resolve;
 }).then(function() {
