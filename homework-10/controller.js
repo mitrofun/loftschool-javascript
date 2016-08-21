@@ -1,4 +1,44 @@
-var Controller = {
+let Photos = {};
+let Albums = {};
+let Menu = [
+    {
+        "title": "по комментариям", 
+        "name": "comments"
+    },
+    {
+        "title": "по репостам", 
+        "name": "reposts"
+    },
+    {
+        "title": "по лайкам",
+        "name": "likes"
+    },
+    {
+        "title": "по дате добавления", 
+        "name": "date"
+    }
+];
+
+function sortArrayByParam(array, param) {
+    array.sort(function(a, b) {
+        let x,y;
+        if (param == 'date') {
+            x = a.date;
+            y = b.date;
+            if (x < y) return -1;
+            if (x > y) return 1;
+            else return 0;
+        } else {
+            x = a[param].count;
+            y = b[param].count;
+            if (x < y) return 1;
+            if (x > y) return -1;
+            else return 0;
+        }
+    });
+}
+
+let Controller = {
     musicRoute: function() {
         return Model.getMusic().then(function(music) {
             results.innerHTML = View.render('music', {list: music});
@@ -66,19 +106,29 @@ var Controller = {
             return photos;
 
         }).then(function (photos) {
-
+            
             Model.getPhotosAlbums().then(function(albums) {
                 allAlbums = albums;
             });
 
             let allAlbums = {};
-
-            console.log(photos);
-            fn = function () {
-                console.log(allAlbums);
-                results.innerHTML = View.render('photos', {photos: photos.items, albums:allAlbums.items});
+            
+            renderingTemplate = function () {
+                Photos = photos;
+                Albums = allAlbums;
+                results.innerHTML = View.render('photos', {photos: photos.items, albums:allAlbums.items, menu:Menu});
             };
-            setTimeout(fn, 500);
+            setTimeout(renderingTemplate, 500);
         });
+    },
+    sortPhotosRoute: function () {
+
+        let resultPhoto = document.getElementById('resultPhoto');
+
+        setTimeout(function(){
+            let hash = document.location.hash.split('#')[1];
+            sortArrayByParam(Photos.items, hash);
+            resultPhoto.innerHTML = View.render('photos', {photos: Photos.items, albums: Albums.items});
+        }, 100)
     }
 };

@@ -19,6 +19,29 @@ Handlebars.registerHelper('ifCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
+results.addEventListener('click', e => {
+
+    let sortMenu = document.querySelector('.sort-menu');
+
+    if (sortMenu) {
+        if (e.target.parentNode.classList.contains('sort-menu')) {
+
+            if (!e.target.classList.contains('active')) {
+                 e.target.classList.add('active');
+            }
+
+            for (let i=sortMenu.children.length-1; i>=0; i--) {
+                if (e.target != sortMenu.children[i]) {
+                    if (sortMenu.children[i].classList.contains('active')) {
+                        sortMenu.children[i].classList.remove('active');
+                    }
+                }
+            }
+
+        }
+    }
+});
+
 new Promise(function(resolve) {
     window.onload = resolve;
 }).then(function() {
