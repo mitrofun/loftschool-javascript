@@ -112,7 +112,7 @@ let Controller = {
             return [photos, albums];
 
         }).then(values => {
-            console.log(values);
+            // console.log(values);
 
             [Photos, Albums] = values;
 
