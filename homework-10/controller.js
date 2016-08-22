@@ -1,4 +1,4 @@
-let Photos = {};
+let Photos = [];
 let Albums = {};
 let Menu = [
     {
@@ -60,75 +60,72 @@ let Controller = {
             results.innerHTML = View.render('groups', {list: groups.items });
         });
     },
+
     photosRoute: function() {
-        return Model.getPhotos().then(function(photos) {
 
-            function updateProperty(obj) {
-                for (let i = 0; i < obj.count; i++) {
+        let getPhotosPromise = Model.getPhotos().then(function(photos) {
 
-                    let changedObj = obj.items[i];
-                    changedObj.comments = {
-                        count: 0,
-                        items: []
-                    }
-                }
-            }
+            return photos.items.map(function (photo) {
+                photo.comments = {
+                    count: 0,
+                    items: []
+                };
+                return photo;
+            });
+        });
 
-            updateProperty(photos);
-            return photos;
+        let getCommentsPromise = Model.getPhotosComments().then(function(allComments) {
 
-        }).then(function (photos) {
+                return allComments.items.map(function (comment) {
+                    Model.getUser(comment.from_id, ['photo_50']).then(function (user) {
+                        comment.user = user;
+                    });
+                    return comment;
+                });
 
-            function updateComment(comment) {
-                Model.getUser(comment.from_id, ['photo_50']).then(function (user) {
-                    comment.user = user;
-                })
-            }
+            });
 
-            function updatePhoto(comment) {
-                for (let i=photos.count- 1; i >= 0; i--) {
-                    let photo = photos.items[i];
-                    if(photo.id == comment.pid) {
+        let getPhotosAlbumsPromise = Model.getPhotosAlbums().then(function(albums) {
+            return albums;
+        });
+
+
+        Promise.all([getPhotosPromise, getCommentsPromise, getPhotosAlbumsPromise]).then(values => {
+
+            let photos = [], albums = {}, comments = [];
+            [photos, comments, albums ] = values;
+
+            function updatePhoto(photo) {
+                comments.map(function (comment) {
+                    if (comment.pid == photo.id) {
                         photo.comments.count ++;
                         photo.comments.items.push(comment);
                     }
-                }
+                    return photo;
+                })
             }
 
-            Model.getPhotosComments().then(function(allComments) {
-                for (let i=allComments.count- 1; i >=0; i--) {
-                    let comment = allComments.items[i];
-                    updateComment(comment);
-                    updatePhoto(comment)
-                }
+            photos.map(function (photo) {
+                return updatePhoto(photo);
             });
 
-            return photos;
+            return [photos, albums];
 
-        }).then(function (photos) {
-            
-            Model.getPhotosAlbums().then(function(albums) {
-                allAlbums = albums;
-            });
+        }).then(values => {
+            console.log(values);
 
-            let allAlbums = {};
-            
-            renderingTemplate = function () {
-                Photos = photos;
-                Albums = allAlbums;
-                results.innerHTML = View.render('photos', {photos: photos.items, albums:allAlbums.items, menu:Menu});
-            };
-            setTimeout(renderingTemplate, 500);
+            [Photos, Albums] = values;
+
+            results.innerHTML = View.render('photos', {photos: Photos , albums: Albums.items, menu:Menu});
         });
     },
+
     sortPhotosRoute: function () {
 
         let resultPhoto = document.getElementById('resultPhoto');
-
-        setTimeout(function(){
-            let hash = document.location.hash.split('#')[1];
-            sortArrayByParam(Photos.items, hash);
-            resultPhoto.innerHTML = View.render('photos', {photos: Photos.items, albums: Albums.items});
-        }, 100)
+        let hash = document.location.hash.split('#')[1];
+        
+        sortArrayByParam(Photos, hash);
+        resultPhoto.innerHTML = View.render('photos', {photos: Photos, albums: Albums.items});
     }
 };
