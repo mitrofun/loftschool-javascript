@@ -62,7 +62,13 @@ let Controller = {
     },
 
     photosRoute: function() {
-
+        
+        let preloader = document.querySelector('.loading');
+        let results = document.getElementById('results');
+        
+        preloader.style.display = 'block';
+        results.style.display = 'none';
+        
         let getPhotosPromise = Model.getPhotos().then(function(photos) {
 
             return photos.items.map(function (photo) {
@@ -89,6 +95,9 @@ let Controller = {
             return albums;
         });
 
+        let TestTimerPromise = new Promise((resolve) => {
+            setTimeout(resolve, 2500);
+        });
 
         Promise.all([getPhotosPromise, getCommentsPromise, getPhotosAlbumsPromise]).then(values => {
 
@@ -115,6 +124,9 @@ let Controller = {
             // console.log(values);
 
             [Photos, Albums] = values;
+
+            preloader.style.display = 'none';
+            results.style.display = 'block';
 
             results.innerHTML = View.render('photos', {photos: Photos , albums: Albums.items, menu:Menu});
         });
