@@ -96,10 +96,10 @@ let Controller = {
         });
 
         let TestTimerPromise = new Promise((resolve) => {
-            setTimeout(resolve, 2500);
+            setTimeout(resolve, 3500);
         });
 
-        Promise.all([getPhotosPromise, getCommentsPromise, getPhotosAlbumsPromise]).then(values => {
+        Promise.all([getPhotosPromise, getCommentsPromise, getPhotosAlbumsPromise, TestTimerPromise]).then(values => {
 
             let photos = [], albums = {}, comments = [];
             [photos, comments, albums ] = values;
