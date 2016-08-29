@@ -15,3 +15,4 @@ Home works [course javascript](https://loftschool.com/course/javascript) in [Lof
 * [homework No 8-4 - Facebook SDK](homework-8-4) 
 * [homework No 9 - Class JS ES5, ES6](homework-9/README.md)
 * [homework No 10 - SPA, Promise, VK SDK](homework-10/README.md)
+* [homework No 11 - NodeJS](homework-11/README.md)
