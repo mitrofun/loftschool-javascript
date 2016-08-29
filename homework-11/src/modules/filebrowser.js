@@ -23,9 +23,13 @@ function __scanPathToArray(path, nested='') {
     }
 }
 
+function __cleanDirs() {
+    DIRS = [];
+}
+
 
 function scanPathToArray(path) {
-    DIRS = [];
+    __cleanDirs();
     DIRS.push(path);
     __scanPathToArray(path);
     return DIRS
