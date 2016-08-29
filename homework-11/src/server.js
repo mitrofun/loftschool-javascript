@@ -34,4 +34,4 @@ http.createServer(function (req, res) {
 
 }).listen(8888);
 
-console.log('http://127.0.0.1:8888/index.html');
+console.log('start server on http://127.0.0.1:8888/index.html');
