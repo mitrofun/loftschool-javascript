@@ -1,7 +1,9 @@
 let fs = require('fs');
-const PATH = '../';
+const ROOTPATH = '../';
 
-function __scanPathToLog(path, nested='') {
+let DIRS = [];
+
+function __scanPathToArray(path, nested='') {
     let dirs = fs.readdirSync(path);
     let currentNested = '-';
 
@@ -13,36 +15,22 @@ function __scanPathToLog(path, nested='') {
         let size = (stat.size /1024).toFixed(2);
 
         if (stat.isDirectory()) {
-            console.log(`${currentNested}${dir} [dir]`);
-            __scanPathToLog(pathToDir, currentNested);
+            DIRS.push(`${currentNested}${dir} [dir]`);
+            __scanPathToArray(pathToDir, currentNested);
         } else {
-            console.log(`${currentNested}${dir} (${size}kb)`)
+            DIRS.push(`${currentNested}${dir} (${size}kb)`);
         }
     }
 }
 
-function scanPathToLog(path) {
-    console.log(path);
-    __scanPathToLog(path);
+
+function scanPathToArray(path) {
+    DIRS = [];
+    DIRS.push(path);
+    __scanPathToArray(path);
+    return DIRS
 }
 
-scanPathToLog(PATH);
+// console.log(scanPathToArray(ROOTPATH));
 
-
-function getFiles(dir, _files){
-    _files = _files || [];
-    let files = fs.readdirSync(dir);
-    for (let i in files){
-        let name = dir + '/' + files[i];
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name, _files);
-        } else {
-            _files.push(name);
-        }
-    }
-    return _files;
-}
-
-console.log(getFiles(PATH));
-
-module.export  = { scanPathToLog };
+module.exports.scanPathToArray  = scanPathToArray;
