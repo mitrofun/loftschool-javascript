@@ -28,4 +28,21 @@ function scanPathToLog(path) {
 
 scanPathToLog(PATH);
 
+
+function getFiles(dir, _files){
+    _files = _files || [];
+    let files = fs.readdirSync(dir);
+    for (let i in files){
+        let name = dir + '/' + files[i];
+        if (fs.statSync(name).isDirectory()){
+            getFiles(name, _files);
+        } else {
+            _files.push(name);
+        }
+    }
+    return _files;
+}
+
+console.log(getFiles(PATH));
+
 module.export  = { scanPathToLog };
