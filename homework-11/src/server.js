@@ -10,6 +10,7 @@ const typeMap = {
 let fb = require('./modules/filebrowser');
 let dirString = path.dirname(fs.realpathSync(__filename));
 let currentPath, currentPage;
+let fileTreeHTML = '';
 
 http.createServer(function (req, res) {
 
@@ -36,16 +37,47 @@ http.createServer(function (req, res) {
 
     // console.log('path to start walking...', currentPath);
 
+    function displayTitlePath(item) {
+        res.write(`<h2>${item.display}</h2>`);
+    }
+
+    function displayBreadcrumb(item) {
+        let paths = item.display.split('/');
+            let breadcrumb = '';
+
+            breadcrumb += '<ol class="breadcrumb">';
+            for (let i = 0; i < paths.length - 1 ; i++) {
+
+                let displayPath = paths[i];
+
+                let link = `${currentPage}?path=${item.display.split(displayPath)[0]}${displayPath}`;
+
+                breadcrumb += `<li><a href='${link}'>${displayPath}</a></li>`
+            }
+
+            breadcrumb +=`<li>${paths[paths.length - 1]}</li>`;
+            breadcrumb += '</ol>';
+            res.write(`${breadcrumb}`);
+    }
+
+    fileTreeHTML += '<ul class="list-group">';
+
     fb.scanPathToArray(currentPath).map(item => {
 
         if (item.type === 'Root') {
-            res.write(`<h2>${item.display}</h2>`);
+
+            displayTitlePath(item);
+            displayBreadcrumb(item);
+
         } else if (item.type === 'Folder') {
-            res.write(`<div><a href='${currentPage}?path=${currentPath}/${item.name}'>${item.display}</a></div>`);
+            fileTreeHTML += `<li class="list-group-item"><span class="badge">${item.size} kb</span><a href='${currentPage}?path=${item.path}'><strong>${item.display}</strong></a></li>`;
         } else {
-            res.write(`<div>${item.display}</div>`);
+            fileTreeHTML += `<li class="list-group-item"><span class="badge">${item.size} kb</span>${item.display}</li>`;
         }
     });
+
+    fileTreeHTML += '</ul>';
+    res.write(fileTreeHTML);
 
     res.end();
 

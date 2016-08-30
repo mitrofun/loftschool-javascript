@@ -1,4 +1,5 @@
 let fs = require('fs');
+let filepath = require('filepath');
 const ROOTPATH = '../';
 
 let DIRS = [];
@@ -7,6 +8,7 @@ let obj = {
     display: '',
     name: '',
     type: '',
+    path: '',
     size: 0
 };
 
@@ -21,21 +23,30 @@ function __scanPathToArray(path, nested='') {
         let stat = fs.statSync(pathToDir);
         let size = (stat.size /1024).toFixed(2);
 
+        let fullPath;
+
         if (stat.isDirectory()) {
+
+            fullPath = filepath.create(pathToDir);
+
             obj = {
                 display: `${currentNested}${dir} [dir]`,
                 name: dir,
                 type: 'Folder',
-                size: size
+                size: size,
+                path: fullPath.toString()
             };
             DIRS.push(obj);
             __scanPathToArray(pathToDir, currentNested);
         } else {
+            fullPath = filepath.create(pathToDir);
+
             obj = {
                 display: `${currentNested}${dir} (${size}kb)`,
                 name: dir,
                 type: 'File',
-                size: size
+                size: size,
+                path: fullPath.toString()
             };
             DIRS.push(obj);
         }
@@ -60,12 +71,12 @@ function scanPathToArray(path) {
 
 function dirTreeToLog(path) {
     scanPathToArray(path).map(item=>{
-        console.log(item.display)
+        console.log(item.path)
     })
 }
 
-// dirTreeToLog(ROOTPATH); - FIRST PART
 
+// dirTreeToLog(ROOTPATH); //- FIRST PART
 
 module.exports.scanPathToArray  = scanPathToArray;
 module.exports.dirTreeToLog = dirTreeToLog;

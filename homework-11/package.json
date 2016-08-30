@@ -1,0 +1,15 @@
+{
+  "name": "homework-11",
+  "version": "1.0.0",
+  "description": "Написать для Node.JS функцию, которая рекурсивно выводит список всех файлов и папок и их размер: например: ``` dir1 (1000kb) — subDir1 (500kb) ——— subFile1 (300kb) ——— subFile2 (200kb) — subDir2 (500) ——— subFile1 (500kb) ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "filepath": "^1.1.0"
+  }
+}
